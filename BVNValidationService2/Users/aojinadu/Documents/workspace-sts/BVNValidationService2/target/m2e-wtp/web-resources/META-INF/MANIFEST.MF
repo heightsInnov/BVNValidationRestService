@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: BVNValidationService2
+Implementation-Version: 1.0
+Built-By: aojinadu
+Implementation-Vendor-Id: com.ubn.bvnv2
+Build-Jdk: 1.8.0_171
+Implementation-URL: http://projects.spring.io/spring-boot/BVNValidatio
+ nService2/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
