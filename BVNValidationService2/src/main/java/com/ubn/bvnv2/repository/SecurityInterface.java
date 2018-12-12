@@ -35,13 +35,13 @@ public class SecurityInterface {
 			String encSingle = retSingle.getBvnSearchResult();
 			decrypt = decryptRequest(encSingle);
 		} catch (java.lang.Exception ex) {
+			ex.printStackTrace();
 		}
 		return decrypt;
 	}
 
 	public String validationencryptRequest(final String dataToEncrypt) {
 		SSMLib enc = new SSMLib(ValidationkeyLocationPublic, keyLocationPrivate);// unionbank_public.key
-
 		return enc.encryptMessage(dataToEncrypt);
 	}
 

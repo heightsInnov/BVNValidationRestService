@@ -35,6 +35,7 @@ public class BVNConnImpl implements BVNConn {
 				nodeValue = nod.getFirstChild() != null ? nod.getFirstChild().getNodeValue() : "";
 			}
 		} catch (Exception ex) {
+			ex.printStackTrace();
 		}
 		return nodeValue;
 	}
@@ -69,6 +70,7 @@ public class BVNConnImpl implements BVNConn {
 			mert.setResponseCode(getNodeValue("/BVNSearchResult/ResponseCode", vbnResponse));
 
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return mert;
 	}
