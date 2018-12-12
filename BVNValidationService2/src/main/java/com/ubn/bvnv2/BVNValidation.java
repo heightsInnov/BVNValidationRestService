@@ -20,6 +20,7 @@ public class BVNValidation {
 	
 	@PostMapping(value="/verifyBVN")
 	public @ResponseBody CustomerDetails Verify(@RequestBody BVNNumber BvnNumber) {
+		System.out.println(BvnNumber);
 		customer = new CustomerDetails();
 		try {
 			customer = serv.getBVNdetails(BvnNumber);
