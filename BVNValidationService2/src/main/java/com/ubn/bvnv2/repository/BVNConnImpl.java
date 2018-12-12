@@ -50,7 +50,9 @@ public class BVNConnImpl implements BVNConn {
 		try {
 
 			vbnResponse = sd.validateBvn2(BvnNumber);
-
+			
+			System.out.println(vbnResponse);
+			
 			mert.setTitle(getNodeValue("/BVNSearchResult/Title", vbnResponse));
 			mert.setWatchListed(getNodeValue("/BVNSearchResult/WatchListed", vbnResponse));
 			mert.setFirstName(getNodeValue("/BVNSearchResult/FirstName", vbnResponse));
