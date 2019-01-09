@@ -8,6 +8,8 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathFactory;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -18,6 +20,7 @@ import com.ubn.bvnv2.model.CustomerDetails;
 @Repository(value = "BVNConn")
 public class BVNConnImpl implements BVNConn {
 
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	SecurityInterface sd = new SecurityInterface();
 
 	public String getNodeValue(String nodeElementPath, String message) {
@@ -31,16 +34,16 @@ public class BVNConnImpl implements BVNConn {
 			XPath xPath = XPathFactory.newInstance().newXPath();
 			NodeList nodeList = (NodeList) xPath.compile(nodeElementPath).evaluate(xmlDocument, XPathConstants.NODESET);
 			Node nod = nodeList.item(0);
-			if (nod.getNodeType() == 1) {
+			if (nod != null && nod.getNodeType() == 1) {
 				nodeValue = nod.getFirstChild() != null ? nod.getFirstChild().getNodeValue() : "";
 			}
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			logger.error("Error encountrered in "+ ex.getStackTrace().getClass().getEnclosingMethod().getName(), ex);
+			System.out.println("Error encountrered in "+ ex.getStackTrace().getClass().getEnclosingMethod().getName());
 		}
 		return nodeValue;
 	}
 
-	@SuppressWarnings("unused")
 	@Override
 	public CustomerDetails getBVNdetails(String BvnNumber) throws Exception {
 		CustomerDetails mert = new CustomerDetails();
@@ -51,7 +54,7 @@ public class BVNConnImpl implements BVNConn {
 
 			vbnResponse = sd.validateBvn2(BvnNumber);
 			
-			System.out.println(vbnResponse);
+			logger.info("XML Response >>> "+vbnResponse);
 			
 			mert.setTitle(getNodeValue("/BVNSearchResult/Title", vbnResponse));
 			mert.setWatchListed(getNodeValue("/BVNSearchResult/WatchListed", vbnResponse));
@@ -73,6 +76,7 @@ public class BVNConnImpl implements BVNConn {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			logger.error("Error encountrered in "+ e.getStackTrace().getClass().getEnclosingMethod().getName(), e);
 		}
 		return mert;
 	}

@@ -23,14 +23,14 @@ public class BVNValidation {
 	
 	@PostMapping(value="/verifyBVN")
 	public @ResponseBody CustomerDetails Verify(@RequestBody BVNNumber BvnNumber) {
+		logger.info("BVN Service Starts Now***********");
 		customer = new CustomerDetails();
 		try {
-			logger.info("BVN Number : " + BvnNumber);
 			customer = serv.getBVNdetails(BvnNumber);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			logger.error("Error encountered", e);
+			logger.error("Error encountrered in "+ e.getStackTrace().getClass().getEnclosingMethod().getName(), e);
 		}
 		return customer;
 	}
