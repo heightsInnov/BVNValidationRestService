@@ -21,7 +21,8 @@ public class BVNValidation {
 	
 	CustomerDetails customer;
 	
-	@PostMapping(value="/verifyBVN")
+	
+	@PostMapping(value="/verifyBVN", produces= {"application/json", "application/xml"})
 	public @ResponseBody CustomerDetails Verify(@RequestBody BVNNumber BvnNumber) {
 		logger.info("BVN Service Starts Now***********");
 		customer = new CustomerDetails();
