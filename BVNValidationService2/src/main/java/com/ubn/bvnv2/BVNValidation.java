@@ -22,7 +22,6 @@ public class BVNValidation {
 	
 	CustomerDetails customer;
 	
-	
 	@PostMapping(value="/verifyBVN")
 	public @ResponseBody CustomerDetails Verify(@RequestBody BVNNumber BvnNumber) {
 		logger.info("BVN Service Starts Now***********");
@@ -40,7 +39,6 @@ public class BVNValidation {
 	@PostMapping(value="/verifyBVN",consumes= {"application/xml"}, produces= {"application/xml"})
 	public @ResponseBody CustomerDetails VerifyOF(@RequestBody BVNNumber BvnNumber) {
 		logger.info("BVN Service Starts Now***********");
-		System.out.println("BVN Number is "+BvnNumber.getBvn());
 		customer = new CustomerDetails();
 		try {
 			customer = serv.getBVNdetails(BvnNumber);
