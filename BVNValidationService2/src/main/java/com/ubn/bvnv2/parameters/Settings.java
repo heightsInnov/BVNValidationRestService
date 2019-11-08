@@ -13,7 +13,13 @@ public class Settings {
 		Properties prop = new Properties();
 		InputStream input = null;
 		String retValue = "";
-		String config_path = "C:\\bvn_update" + File.separator + "ubnwebpay.properties";
+		String WSCONFIG_HOME = "C:/bvn_update/";
+
+		if (!new File(WSCONFIG_HOME).isDirectory()) {
+			WSCONFIG_HOME = "//u01//app//oracle//config//properties//";
+		}
+		
+		String config_path = WSCONFIG_HOME + "bvnupdate.properties";
 
 		try {
 			input = new FileInputStream(config_path);

@@ -18,8 +18,8 @@ public class SecurityInterface {
 	String ValidationkeyLocationPublic = Settings.getPropertiesValue("ValidationkeyLocationPublic");
 	String keyLocationPrivate = Settings.getPropertiesValue("keyLocationPrivate");
 	String password = Pb.PBDecrypt(Settings.getPropertiesValue("password"));
-	@SuppressWarnings("unused")
-	private static final String OUTPUT_FILE = "C:\\BVN_link_update\\keys\\phototestFile.png";
+	
+	//private static String OUTPUT_FILE = "C:\\BVN_link_update\\keys\\phototestFile.png";
 
 	@SuppressWarnings("unused")
 	public String validateBvn2(String bvn) throws FileNotFoundException {

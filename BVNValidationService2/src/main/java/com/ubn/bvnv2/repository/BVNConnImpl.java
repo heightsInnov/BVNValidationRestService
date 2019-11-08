@@ -71,7 +71,8 @@ public class BVNConnImpl implements BVNConn {
 			mert.setStateOfOrigin(getNodeValue("/BVNSearchResult/StateOfOrigin", vbnResponse));
 			mert.setResidentialAdd(getNodeValue("/BVNSearchResult/ResidentialAddress", vbnResponse));
 			mert.setLga(getNodeValue("/BVNSearchResult/LgaOfOrigin", vbnResponse));
-			//String imageNow = getNodeValue("/BVNSearchResult/ImageHashValue", vbnResponse);
+			String imageNow = getNodeValue("/BVNSearchResult/ImageHashValue", vbnResponse);
+			mert.setImageHashSet(imageNow);
 			mert.setResponseCode(getNodeValue("/BVNSearchResult/ResponseCode", vbnResponse));
 
 		} catch (Exception e) {

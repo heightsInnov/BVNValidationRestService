@@ -18,6 +18,14 @@ public class CustomerDetails {
 	private String BankEnroll;
 	private String BranchEnroll;
 	private String WatchListed;
+	private String ImageHashSet;
+	
+	public String getImageHashSet() {
+		return ImageHashSet;
+	}
+	public void setImageHashSet(String imageHashSet) {
+		ImageHashSet = imageHashSet;
+	}
 	
 	public String getTitle() {
 		return Title;
